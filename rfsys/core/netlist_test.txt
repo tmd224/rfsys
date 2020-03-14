@@ -1,0 +1,25 @@
+# Netlist schema
+# Lines starting with a # are a comma and will be ignored
+# netlist schema is in the following form
+# RefDes-UID.Port;RefDes-UID.Port
+# The left hand component is the input and the right hand component(s) are the output
+# RefDes is a unique reference designator for the component
+# UID is a unique component identifier from the component XML definition
+# Multiple RefDes can use the same UID (ie multiple instances of the same component definition)
+# The port is the component port number.  Most devices will have 1 as input and 2 as output.
+# For P > 2, refer to component documentation for port enumerations
+# Multiple connections are possible:
+# U1-LNA1.2;R1-R10K.1;C1-C100PF.1
+# In this example, the output of an LNA goes to a 10K resistor and to a 100pF cap
+
+SOURCE.1;U1-LNA1.1
+U1-LNA1.2;U2-P1.1
+U2-P1.2;FL1-FILT1.1
+FL1-FILT1.2;U3-S1.1
+U3-S1.2;FL2-FILT1.1
+FL2-FILT1.2;U4-P1.1
+U4-P1.2;SINK.1
+
+U3-S1.3;FL3-FILT1.1
+FL3-FILT1.2;SINK.2
+
